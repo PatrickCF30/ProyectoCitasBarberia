@@ -1,0 +1,22 @@
+.turnos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .cita-card {
+    transition: transform 0.2s;
+  }
+  
+  .cita-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .cancelar-btn {
+    @apply bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-200;
+    width: 100%;
+  }
+  
+  .cancelar-btn:disabled {
+    @apply bg-gray-500 cursor-not-allowed;
+  }

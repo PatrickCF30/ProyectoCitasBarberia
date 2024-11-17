@@ -1,0 +1,89 @@
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="submit()"
+  class="grid border border-[--surface-border] gap-4 rounded-lg text-base py-10 px-8 bg-[--surface-overlay] w-26 mx-auto shadow-lg"
+>
+  <p-divider align="center">
+    <h1 class="text-xl font-semibold">Inicio de sesión</h1>
+  </p-divider>
+
+  <div class="space-y-2">
+    <label for="username-login">Nombre de usuario</label>
+    <p-inputGroup>
+      <p-inputGroupAddon>
+        <i class="pi pi-user"></i>
+      </p-inputGroupAddon>
+      <!--      <p-inputicon styleClass="pi pi-user size-4" />-->
+      <input
+        id="username-login"
+        [ngClass]="[isNotValidField('username') ? 'ng-invalid ng-dirty' : '']"
+        type="text"
+        autocomplete="username"
+        formControlName="username"
+        pInputText
+      />
+    </p-inputGroup>
+    <div class="h-3">
+      @if (isNotValidField("username")) {
+        <small class="block text-red-400">Este campo es obligatorio</small>
+      }
+    </div>
+  </div>
+
+  <div class="space-y-2">
+    <label for="login-password">Contraseña</label>
+    <p-inputGroup>
+      <p-inputGroupAddon>
+        <i class="pi pi-lock"></i>
+      </p-inputGroupAddon>
+      <input
+        id="login-password"
+        [ngClass]="isNotValidField('password') ? 'ng-invalid ng-dirty' : ''"
+        [type]="seePass() ? 'text' : 'password'"
+        autocomplete="current-password"
+        formControlName="password"
+        pInputText
+      />
+      <p-inputGroupAddon (click)="showPassword()" class="cursor-pointer">
+        <i [class]="seePass() ? 'pi pi-eye' : 'pi pi-eye-slash'"></i>
+      </p-inputGroupAddon>
+    </p-inputGroup>
+    <div class="h-3">
+      @if (isNotValidField("password")) {
+        <small class="block text-red-400">Este campo es obligatorio</small>
+      }
+    </div>
+  </div>
+
+  <button
+    class="justify-center gap-1 mt-6"
+    type="submit"
+    pButton
+    pRipple
+    [label]="isLoading() ? 'Autenticando...' : 'Ingresar'"
+    [disabled]="isLoading()"
+  >
+    @if (isLoading()) {
+      <i class="pi pi-spin pi-spinner text-sm"></i>
+    }
+    <span class="sr-only">Ingresar</span>
+  </button>
+
+  <a
+    class="justify-center gap-1 mt-6"
+    pButton
+    pRipple
+    label="Registrarse"
+    routerLink="/auth/registro"
+  >
+    <span class="sr-only">Registrarse</span>
+  </a>
+
+  <div>
+    <a
+      href="http://localhost:4200/auth/forgot-password"
+      class="text-sm hover:text-primary underline transition-colors"
+      >Olvidé mi contraseña</a
+    >
+  </div>
+</form>

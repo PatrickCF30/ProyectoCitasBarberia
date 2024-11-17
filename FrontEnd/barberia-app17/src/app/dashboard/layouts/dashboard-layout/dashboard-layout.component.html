@@ -1,0 +1,18 @@
+<div
+  class="layout | transition-[grid-template-columns]"
+  [attr.data-collapsed]="isCollapsed()"
+>
+  <header class="header | bg-slate-200 p-4">topbar</header>
+  <section
+    class="sidebar | bg-slate-700 relative"
+  >
+    <button
+      type="button"
+      class="absolute inset-[4.5rem_-0.75rem_auto_auto] size-8 bg-white border-transparent rounded-full cursor-pointer"
+      (click)="toggleCollapsed()"
+    >
+      &#9776;
+    </button>
+  </section>
+  <main class="main | bg-slate-100 p-4">main content</main>
+</div>

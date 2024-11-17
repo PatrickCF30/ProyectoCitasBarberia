@@ -1,0 +1,130 @@
+<div class="registro-container">
+    <div class="border-b-2 text-gray-100 shadow-md">
+      <div class="w-full p-6 text-gray-100 shadow-md">
+        <div class="registro-header">
+          <span class="text-xl font-semibold">Registro de Usuario</span>
+        </div>
+        
+        <!-- Asegúrate de que el formulario tenga correctamente el evento ngSubmit -->
+        <form (ngSubmit)="registrarUsuario()" #formularioRegistro="ngForm" novalidate>
+          
+          <!-- Nombre -->
+          <div class="pb-6">
+            <label for="first_name" class="font-semibold text-gray-100 block pb-1">Nombre</label>
+            <input
+              id="first_name"
+              class="input-editable"
+              type="text"
+              [(ngModel)]="registro.firstName"
+              name="firstName"
+              required
+              #firstName="ngModel"
+            />
+            <!-- Mensaje de error para campo requerido -->
+            <div *ngIf="firstName.invalid && firstName.touched" class="text-red-500">
+              El nombre es obligatorio.
+            </div>
+          </div>
+  
+          <!-- Apellido -->
+          <div class="pb-6">
+            <label for="last_name" class="font-semibold text-gray-100 block pb-1">Apellido</label>
+            <input
+              id="last_name"
+              class="input-editable"
+              type="text"
+              [(ngModel)]="registro.lastName"
+              name="lastName"
+              required
+              #lastName="ngModel"
+            />
+            <div *ngIf="lastName.invalid && lastName.touched" class="text-red-500">
+              El apellido es obligatorio.
+            </div>
+          </div>
+  
+          <!-- Email -->
+          <div class="pb-6">
+            <label for="email" class="font-semibold text-gray-100 block pb-1">Email</label>
+            <input
+              id="email"
+              class="input-editable"
+              type="email"
+              [(ngModel)]="registro.email"
+              name="email"
+              required
+              #email="ngModel"
+            />
+            <div *ngIf="email.invalid && email.touched" class="text-red-500">
+              Ingrese un email válido.
+            </div>
+          </div>
+  
+          <!-- Username -->
+          <div class="pb-6">
+            <label for="username" class="font-semibold text-gray-100 block pb-1">Nombre de Usuario</label>
+            <input
+              id="username"
+              class="input-editable"
+              type="text"
+              [(ngModel)]="registro.username"
+              name="username"
+              required
+              #username="ngModel"
+            />
+            <div *ngIf="username.invalid && username.touched" class="text-red-500">
+              El nombre de usuario es obligatorio.
+            </div>
+          </div>
+  
+          <!-- Teléfono -->
+          <div class="pb-6">
+            <label for="phone" class="font-semibold text-gray-100 block pb-1">Teléfono</label>
+            <input
+              id="phone"
+              class="input-editable"
+              type="text"
+              [(ngModel)]="registro.phone"
+              name="phone"
+              required
+              #phone="ngModel"
+            />
+            <div *ngIf="phone.invalid && phone.touched" class="text-red-500">
+              El teléfono es obligatorio.
+            </div>
+          </div>
+  
+          <!-- Contraseña -->
+          <div class="pb-6">
+            <label for="password" class="font-semibold text-gray-100 block pb-1">Contraseña</label>
+            <input
+              id="password"
+              class="input-editable"
+              type="password"
+              [(ngModel)]="registro.password"
+              name="password"
+              required
+              minlength="6"
+              #password="ngModel"
+            />
+            <div *ngIf="password.invalid && password.touched" class="text-red-500">
+              <div *ngIf="password.errors?.['required']">La contraseña es obligatoria.</div>
+              <div *ngIf="password.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</div>
+            </div>
+          </div>
+  
+          <!-- Botón Registrar -->
+          <div class="pt-4">
+            <button 
+              type="submit" 
+              class="editar-btn" 
+              [disabled]="formularioRegistro.invalid || registrando"
+            >
+              {{ registrando ? 'Registrando...' : 'Registrar' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

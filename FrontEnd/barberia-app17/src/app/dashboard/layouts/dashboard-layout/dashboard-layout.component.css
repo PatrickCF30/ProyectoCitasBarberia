@@ -1,0 +1,26 @@
+.layout {
+  height: 100svh;
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main"
+  ;
+}
+
+.layout[data-collapsed=true] {
+  grid-template-columns: 12.5rem 1fr;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.main {
+  grid-area: main;
+}

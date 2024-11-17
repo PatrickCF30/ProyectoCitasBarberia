@@ -1,0 +1,64 @@
+<header class="h-16 flex justify-between items-center p-6">
+  <div class="w-28 relative shrink-0">
+    <a routerLink="/home" class="block">
+      <img src="/assets/barber.png" alt="Logo" />
+    </a>
+  </div>
+  <nav>
+    <ul class="flex gap-4 gap-y-0.5 flex-wrap items-center font-serif">
+      <li class="hover:text-gold-500 transition-colors">
+        <a
+          class="inline-block py-1.5 px-2.5"
+          routerLink="/home"
+          routerLinkActive="active-route"
+        >
+          Servicios
+        </a>
+      </li>
+      <li class="hover:text-gold-500 transition-colors">
+        <a
+          class="inline-block py-1.5 px-2.5"
+          routerLink="/profesionals"
+          routerLinkActive="active-route"
+        >
+          Profesionales
+        </a>
+      </li>
+      <li class="hover:text-gold-500 transition-colors">
+        <a class="inline-block py-1.5 px-2.5" routerLink="/turnos" routerLinkActive="active-route">
+          Turnos
+        </a>
+      </li>
+      <li class="hover:text-gold-500 transition-colors">
+        <a
+          class="inline-block py-1.5 px-2.5"
+          routerLink="perfil"
+          routerLinkActive="active-route"
+        >
+          Perfil
+        </a>
+      </li>
+      <li class="hover:text-gold-500 transition-colors">
+        @if (isLoggedIn()) {
+          <button
+            class="inline-block py-1.5 px-2.5 !bg-gold-400 !border-none hover:!bg-gold-500 !text-zinc-100"
+            routerLinkActive="active-route"
+            (click)="logout()"
+            pButton
+          >
+            Cerrar sesión
+          </button>
+        } @else {
+          <a
+            class="inline-block py-1.5 px-2.5 !bg-gold-400 !border-none hover:!bg-gold-500 !text-zinc-100"
+            routerLinkActive="active-route"
+            routerLink="/auth/login"
+            pButton
+          >
+            Iniciar sesión
+          </a>
+        }
+      </li>
+    </ul>
+  </nav>
+</header>

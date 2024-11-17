@@ -1,0 +1,107 @@
+<div class="flex flex-col justify-center items-center bg-zinc-950 h-full">
+  <div class="w-full max-w-5xl mt-10 p-5">
+    <div class="relative flex w-full flex-col">
+      <div class="rounded-lg border bg-card text-card-foreground shadow-sm h-full w-full p-6 border-zinc-800">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <h1 class="text-2xl font-semibold text-white">Citas</h1>
+            <p class="text-sm text-zinc-400">Lista de todas las citas programadas</p>
+          </div>
+          <button (click)="cerrarSesion()"
+                  class="px-4 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700 text-sm font-medium">
+            Cerrar Sesion
+          </button>
+        </div>
+
+        <!-- Loading State -->
+        <div *ngIf="loading" class="flex justify-center items-center py-8">
+          <div class="text-center text-zinc-400">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500 mx-auto mb-4"></div>
+            <p>Cargando citas...</p>
+          </div>
+        </div>
+
+        <!-- Error State -->
+        <div *ngIf="error" class="bg-red-500/10 border border-red-500 rounded-lg p-4 mb-6">
+          <p class="text-red-500 text-sm">{{ errorMessage }}</p>
+        </div>
+
+        <!-- Data Table -->
+        <div *ngIf="!loading && !error" class="overflow-x-auto">
+          <div class="inline-block min-w-full align-middle">
+            <div class="overflow-hidden shadow-sm ring-1 ring-black ring-opacity-5 rounded-lg">
+              <table class="min-w-full divide-y divide-zinc-800">
+                <thead class="bg-zinc-800">
+                  <tr>
+                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-zinc-400 sm:pl-6">
+                      Fecha
+                    </th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-zinc-400">
+                      Cliente
+                    </th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-zinc-400">
+                      Empleado
+                    </th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-zinc-400">
+                      Servicio
+                    </th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-zinc-400">
+                      Estado
+                    </th>
+                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                      <span class="sr-only">Acciones</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-zinc-800 bg-zinc-900">
+                  <tr *ngIf="citas.length === 0">
+                    <td colspan="6" class="text-center py-4 text-zinc-400">
+                      No hay citas disponibles
+                    </td>
+                  </tr>
+                  <tr *ngFor="let cita of citas" class="hover:bg-zinc-800/50">
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-white sm:pl-6">
+                      <div class="font-medium">{{cita.datetime | date:'shortDate'}}</div>
+                      <div class="text-zinc-400">{{cita.datetime | date:'shortTime'}} - {{cita.end_time | date:'shortTime'}}</div>
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-white">
+                      {{cita.customer}}
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-white">
+                      {{cita.employee}}
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-white">
+                      {{cita.service}}
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm">
+                      <span [ngClass]="cita.cancelled ? 
+                            'bg-red-500/10 text-red-400 border-red-500' : 
+                            'bg-green-500/10 text-green-400 border-green-500'"
+                            class="inline-flex rounded-full px-2 py-1 text-xs font-medium border">
+                        {{cita.cancelled ? 'Cancelada' : 'Activa'}}
+                      </span>
+                    </td>
+                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                      <button (click)="deleteCita(cita.id)" 
+                              class="text-red-500 hover:text-red-400">
+                        Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div *ngIf="!loading && !error && citas.length > 0" class="mt-6 flex items-center justify-between">
+          <div class="text-sm text-zinc-400">
+            Mostrando <span class="font-medium">{{citas.length}}</span> citas
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

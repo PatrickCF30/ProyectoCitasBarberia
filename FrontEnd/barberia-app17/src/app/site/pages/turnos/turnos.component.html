@@ -1,0 +1,48 @@
+<div class="turnos-container">
+  <h2 class="text-2xl font-bold mb-6 text-gray-100">Mis Turnos</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div *ngFor="let cita of citasState.citas()" class="cita-card">
+      <div class="p-6 rounded-lg shadow-md bg-zinc-900 text-gray-400">
+        <div class="mb-4">
+          <h3 class="text-2xl text-gray-200 font-semibold mb-2">
+            {{ cita.servicio }}
+          </h3>
+          <p class="text-gray-300">{{ cita.fecha | date }}</p>
+        </div>
+
+        <div class="grid gap-2 mb-4">
+          <p class="text-bold text-gray-300">
+            Profesional: <span class="text-gray-400">{{ cita.empleado }}</span>
+          </p>
+          <p class="text-bold text-gray-300">
+            Estado:
+            <p-tag
+              class="text-gray-400"
+              [severity]="cita.estado === 'ACTIVA' ? 'success' : 'danger'"
+              >{{ cita.estado }}</p-tag
+            >
+          </p>
+          <p class="text-bold text-gray-300">
+            Horario: <span class="text-gray-400">{{ cita.horario }}</span>
+          </p>
+        </div>
+
+        <button
+          *ngIf="cita.estado !== 'CANCELADA'"
+          (click)="cancelarCita(cita.id)"
+          class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+        >
+          Cancelar Turno
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="citasState().citas.length === 0"
+    class="text-center text-gray-100 mt-8"
+  >
+    No tienes turnos programados
+  </div>
+</div>

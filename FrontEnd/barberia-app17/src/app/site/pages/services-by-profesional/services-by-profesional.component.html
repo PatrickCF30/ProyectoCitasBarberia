@@ -1,0 +1,48 @@
+<div
+  class="h-[calc(100svh-132px)] w-full bg-no-repeat bg-cover bg-center"
+  style="background-image: url('/assets/barber-{{ profesionalId }}.jpg')"
+>
+  <div
+    class="grid place-content-center h-full backdrop-blur-md backdrop-brightness-50"
+  >
+    <article class="grid gap-1 min-w-[28rem] bg-gold-400 rounded-md">
+      <h2 class="text-center text-lg text-zinc-100 bg-zinc-900 p-4">
+        Lista de Servicios
+      </h2>
+      <ul>
+        @for (service of profesionalServices.services(); track service.id) {
+          <li>
+            <div
+              class="flex justify-between items-center p-4 bg-zinc-900 space-y-1"
+            >
+              <div>
+                <h3 class="font-serif text-lg text-gray-200">
+                  {{ service.name }}
+                </h3>
+                <p class="max-w-[30ch]">
+                  {{ service.description }}
+                </p>
+              </div>
+              <div class="space-y-1">
+                <p class="text-xl text-gray-100">{{ service.price }}</p>
+                <a
+                  class="inline-block w-fit py-1.5 px-2.5 rounded bg-gold-400 hover:bg-gold-400/90 transition-colors text-gray-200"
+                  href=""
+                  [routerLink]="[service.id, 'book-appointment']"
+                >
+                  Elegir
+                </a>
+              </div>
+            </div>
+          </li>
+        } @empty {
+          <div
+            class="flex justify-between items-center p-4 bg-zinc-900 space-y-1"
+          >
+            {{ profesionalServices().employee }} aún no ofrece ningún servicio
+          </div>
+        }
+      </ul>
+    </article>
+  </div>
+</div>

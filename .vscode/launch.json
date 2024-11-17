@@ -1,0 +1,60 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "BarberShopApplication",
+            "request": "launch",
+            "mainClass": "com.barbershop.BarberShopApplication",
+            "projectName": "barber-shop"
+        },
+        {
+            "type": "java",
+            "name": "SecurityConfig",
+            "request": "launch",
+            "mainClass": "pe.edu.cibertec.security.SecurityConfig",
+            "projectName": "barberia-api-base"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BarberiaApiBaseApplication<barberia-api-base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "pe.edu.cibertec.BarberiaApiBaseApplication",
+            "projectName": "barberia-api-base",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=62569 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=barberia-api-base"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServicioRestBaseApplication<api-rest-empleados>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.employees.app.ServicioRestBaseApplication",
+            "projectName": "api-rest-empleados",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=64398 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=api-rest-empleados"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BarberiaApiFeignApplication<barberia-api-feign>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "pe.edu.cibertec.feign.BarberiaApiFeignApplication",
+            "projectName": "barberia-api-feign",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoApplication<proyecto>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.proyecto.ProyectoApplication",
+            "projectName": "proyecto",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
