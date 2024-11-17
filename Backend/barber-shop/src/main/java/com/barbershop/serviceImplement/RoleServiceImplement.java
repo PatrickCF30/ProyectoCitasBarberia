@@ -124,24 +124,4 @@ public class RoleServiceImplement implements RoleService {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(respuesta);
 		}
 	}
-
-	@Override
-	public ResponseEntity<Map<String, Object>> listarRolesEnable() {
-		// Ejemplo de lógica para roles habilitados. Implementar según la base de datos.
-		return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(Map.of(
-				"mensaje", "Función no implementada",
-				"status", HttpStatus.NOT_IMPLEMENTED,
-				"fecha", new Date()
-		));
-	}
-
-	@Override
-	public ResponseEntity<Map<String, Object>> eliminarRolesEnable(Long id) {
-		// Ejemplo de lógica para eliminar roles habilitados. Implementar según la base de datos.
-		return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(Map.of(
-				"mensaje", "Función no implementada",
-				"status", HttpStatus.NOT_IMPLEMENTED,
-				"fecha", new Date()
-		));
-	}
 }

@@ -17,8 +17,5 @@ public interface RoleService {
 	ResponseEntity<Map<String, Object>> editarRoles(Role role, Long id);
 	
 	ResponseEntity<Map<String, Object>> eliminarRoles(Long id);
-	
-	ResponseEntity<Map<String, Object>> listarRolesEnable();
-	
-	ResponseEntity<Map<String, Object>> eliminarRolesEnable(Long id);
+
 }

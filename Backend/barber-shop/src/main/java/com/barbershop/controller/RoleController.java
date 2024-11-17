@@ -50,14 +50,4 @@ public class RoleController {
 		return roleDao.eliminarRoles(id);
 	}
 	
-	@GetMapping("/enable")
-	public ResponseEntity<Map<String, Object>> listarPorEnable(){
-		return roleDao.listarRolesEnable();
-	}
-	
-	@PutMapping("/eliminar/{id}")
-	public ResponseEntity<Map<String, Object>> eliminarPorEnable(@PathVariable Long id){
-		return roleDao.eliminarRolesEnable(id);
-	}
-	
 }
